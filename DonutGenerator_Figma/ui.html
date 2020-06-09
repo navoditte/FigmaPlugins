@@ -1,0 +1,20 @@
+<link rel="stylesheet" href="https://static.figma.com/api/figma-extension-api-0.0.1.css">
+<h2>Navo's First Plugin</h2>
+<p>
+  Percentage:
+  <input id="textbox" placeholder="40" value="40">
+</p>
+<b id="errors"></b>
+<p><button>Create Donut Chart</button></p>
+<script>
+  document.querySelector('button').onclick = () => {
+    const text = document.querySelector('#textbox').value
+    let numbers = text
+    if (numbers.length > 3) {
+      showError('Error: Must be between 0-100%');
+      return
+    }
+
+    parent.postMessage({ pluginMessage: numbers }, '*')
+  }
+</script>
